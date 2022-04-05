@@ -1,0 +1,25 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "semi": "off",
+    "@typescript-eslint/semi": [
+      "warn"
+    ],
+    "@typecript-eslint/no-empty-interface": [
+      "error",
+      {
+        "allowSignleExtends": true
+      }
+    ]
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommened",
+    "plugin:@typescript-eslint/recommended",
+    "plugin: react-hooks/recommended"
+  ]
+}
