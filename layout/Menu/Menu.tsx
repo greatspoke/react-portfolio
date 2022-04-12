@@ -3,20 +3,11 @@ import cn from 'classnames';
 import { useContext } from 'react';
 import { AppContext } from '../../context/app.context';
 import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface';
-import CoursesIcon from './icons/courses.svg';
-import ServicesIcon from './icons/servises.svg';
-import BooksIcon from './icons/books.svg';
-import ProductsIcon from './icons/products.svg';
-import { TopLevelCategory } from '../../interfaces/page.interface';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { firstLevelMenu } from '../../helpers/helpers';
 
-const firstLevelMenu: FirstLevelMenuItem[] = [
-	{ route: 'courses', name: 'Courses', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
-	{ route: 'services', name: 'Services', icon: <ServicesIcon />, id: TopLevelCategory.Services },
-	{ route: 'books', name: 'Books', icon: <BooksIcon />, id: TopLevelCategory.Books },
-	{ route: 'products', name: 'Products', icon: <ProductsIcon />, id: TopLevelCategory.Products }
-]
+
 export const Menu = (): JSX.Element => {
 	const { menu, setMenu, firstCategory } = useContext(AppContext)
 	const router = useRouter();
@@ -27,7 +18,7 @@ export const Menu = (): JSX.Element => {
 				m.isOpened = !m.isOpened;
 			}
 			return m;
-		}))
+		}));
 	}
 
 
@@ -37,7 +28,7 @@ export const Menu = (): JSX.Element => {
 				{firstLevelMenu.map(m => (
 					<div key={m.route}>
 						<Link href={`/${m.route}`}>
-							<a >
+							<a>
 								<div className={cn(styles.firstLevel, {
 									[styles.firstLevelActive]: m.id == firstCategory
 								})}>
@@ -58,7 +49,7 @@ export const Menu = (): JSX.Element => {
 			<div className={styles.secondBlock}>
 				{menu.map(m => {
 					if (m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
-						m.isOpened == true;
+						m.isOpened = true;
 					}
 					return (
 						<div key={m._id.secondCategory}>
