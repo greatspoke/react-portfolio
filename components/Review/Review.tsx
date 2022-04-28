@@ -4,10 +4,9 @@ import UserIcon from './user.svg';
 import cn from 'classnames';
 import { format } from 'date-fns';
 import En from 'date-fns/locale/en-US';
-import { Rating } from '../Rating/Rating';
 export const Review = ({ review, className, ...props }: ReviewProps): JSX.Element => {
 
-	const { name, title, description, createdAt, rating } = review;
+	const { name, title, description, createdAt } = review;
 	return (
 		<div className={cn(styles.review, className)}
 			{...props}
@@ -22,7 +21,7 @@ export const Review = ({ review, className, ...props }: ReviewProps): JSX.Elemen
 				{format(new Date(createdAt), 'dd MMMM yyyy', { locale: En })}
 			</div>
 			<div className={styles.rating}>
-				<Rating rating={rating} />
+
 			</div>
 			<div className={styles.description}>
 				{description}
